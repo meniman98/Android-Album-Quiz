@@ -2,4 +2,9 @@
     <string name="app_name">Album Quiz</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="greeting">Welcome to the Album Quiz. Enjoy your stay</string>
+    <string name="intro">Hello and welcome, how nice of you to visit. Do you
+            know your albums well? Lets put that knowledge to the test shall we?
+            Go ahead and press play. Have fun</string>
+    <string name="play">Play</string>
 </resources>
