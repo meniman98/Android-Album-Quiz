@@ -7,4 +7,6 @@
             know your albums well? Lets put that knowledge to the test shall we?
             Go ahead and press play. Have fun</string>
     <string name="play">Play</string>
+    <string name="gameTitle">Album Quiz (%1$d/%2$d)</string>
+    <string name="submitAnswer">Submit Answer</string>
 </resources>
