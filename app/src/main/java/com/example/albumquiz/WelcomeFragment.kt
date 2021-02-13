@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.Navigation
 import com.example.albumquiz.databinding.FragmentWelcomeBinding
 
 
@@ -24,6 +25,10 @@ class WelcomeFragment : Fragment() {
         val binding: FragmentWelcomeBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_welcome, container, false
         )
+
+        binding.btnPlay.setOnClickListener { view: View ->
+            Navigation.findNavController(view).navigate(WelcomeFragmentDirections.actionWelcomeFragmentToGameFragment())
+        }
 
 
 

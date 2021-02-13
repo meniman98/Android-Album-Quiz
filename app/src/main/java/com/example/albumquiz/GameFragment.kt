@@ -1,10 +1,12 @@
 package com.example.albumquiz
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
@@ -128,20 +130,24 @@ class GameFragment : Fragment() {
     lateinit var currentQuestion: Question
     lateinit var answers: MutableList<String>
     private var questionIndex = 0
-    private val numQuestions = Math.min((questions.size + 1) / 2, 3)
+    private val numQuestions = Math.min((questions.size + 1), 10)
+    lateinit var binding: FragmentGameBinding
+    lateinit var selectedRadioButton: RadioButton
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val binding: FragmentGameBinding = DataBindingUtil.inflate(
+        binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_game, container, false
         )
 
         randomiseQuestions()
 
         binding.model = this
+
+
 
         binding.btnSubmit.setOnClickListener { view: View? ->
             val checkedId = binding.radioGroup.checkedRadioButtonId
@@ -160,11 +166,16 @@ class GameFragment : Fragment() {
                         binding.invalidateAll()
                     } else {
                         // we won
-
                     }
                 } else {
                     // we lost
-
+                    when (checkedId) {
+                        R.id.rb1 -> selectedRadioButton
+                        R.id.rb2 -> selectedRadioButton
+                        R.id.rb3 -> selectedRadioButton
+                        R.id.rb4 -> selectedRadioButton
+                    }
+                    selectedRadioButton.setBackgroundColor(Color.RED)
                 }
             }
         }
@@ -175,13 +186,16 @@ class GameFragment : Fragment() {
     private fun randomiseQuestions() {
         questions.shuffle()
         questionIndex = 0
+
         setQuestion()
     }
 
     private fun setQuestion() {
         currentQuestion = questions[questionIndex]
+        binding.ivAlbumCover.setImageResource(currentQuestion.image)
         answers = currentQuestion.answers.toMutableList()
         answers.shuffle()
+        binding.radioGroup.clearCheck()
         (activity as AppCompatActivity).supportActionBar?.title =
             getString(R.string.gameTitle, questionIndex + 1, numQuestions)
     }
