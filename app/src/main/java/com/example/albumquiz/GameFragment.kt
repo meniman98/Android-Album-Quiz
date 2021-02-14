@@ -132,7 +132,7 @@ class GameFragment : Fragment() {
     private var questionIndex = 0
     private val numQuestions = Math.min((questions.size + 1), 10)
     lateinit var binding: FragmentGameBinding
-    lateinit var selectedRadioButton: RadioButton
+    lateinit var radioButtons: List<RadioButton>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -147,6 +147,13 @@ class GameFragment : Fragment() {
 
         binding.model = this
 
+        radioButtons = listOf(
+            binding.rb1,
+            binding.rb2,
+            binding.rb3,
+            binding.rb4
+        )
+
 
 
         binding.btnSubmit.setOnClickListener { view: View? ->
@@ -159,23 +166,27 @@ class GameFragment : Fragment() {
                     R.id.rb4 -> answerIndex = 3
                 }
                 if (answers[answerIndex] == currentQuestion.answers[0]) {
+
                     questionIndex++
                     if (questionIndex < numQuestions) {
                         currentQuestion = questions[questionIndex]
                         setQuestion()
                         binding.invalidateAll()
+                        for (radioButton in radioButtons) {
+                            radioButton.setBackgroundColor(Color.TRANSPARENT)
+                        }
                     } else {
                         // we won
                     }
                 } else {
                     // we lost
                     when (checkedId) {
-                        R.id.rb1 -> selectedRadioButton
-                        R.id.rb2 -> selectedRadioButton
-                        R.id.rb3 -> selectedRadioButton
-                        R.id.rb4 -> selectedRadioButton
+                        R.id.rb1 -> binding.rb1.setBackgroundColor(Color.RED)
+                        R.id.rb2 -> binding.rb2.setBackgroundColor(Color.RED)
+                        R.id.rb3 -> binding.rb3.setBackgroundColor(Color.RED)
+                        R.id.rb4 -> binding.rb4.setBackgroundColor(Color.RED)
                     }
-                    selectedRadioButton.setBackgroundColor(Color.RED)
+
                 }
             }
         }
