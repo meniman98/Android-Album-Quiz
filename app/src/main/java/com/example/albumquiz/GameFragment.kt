@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.RadioButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.example.albumquiz.databinding.FragmentGameBinding
 
@@ -156,7 +157,7 @@ class GameFragment : Fragment() {
 
 
 
-        binding.btnSubmit.setOnClickListener { view: View? ->
+        binding.btnSubmit.setOnClickListener { view: View ->
             val checkedId = binding.radioGroup.checkedRadioButtonId
             if (-1 != checkedId) {
                 var answerIndex = 0
@@ -177,6 +178,7 @@ class GameFragment : Fragment() {
                         }
                     } else {
                         // we won
+                        view.findNavController().navigate(GameFragmentDirections.actionGameFragmentToWonFragment())
                     }
                 } else {
                     // we lost
