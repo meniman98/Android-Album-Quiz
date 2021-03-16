@@ -4,7 +4,7 @@
     app:startDestination="@id/welcomeFragment">
     <fragment
         android:id="@+id/welcomeFragment"
-        android:name="com.example.albumquiz.WelcomeFragment"
+        android:name="com.huncho.jack.WelcomeFragment"
         android:label="WelcomeFragment" >
         <action
             android:id="@+id/action_welcomeFragment_to_gameFragment"
@@ -12,7 +12,7 @@
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
-        android:name="com.example.albumquiz.GameFragment"
+        android:name="com.huncho.jack.GameFragment"
         android:label="GameFragment" >
         <action
             android:id="@+id/action_gameFragment_to_wonFragment"
@@ -20,6 +20,6 @@
     </fragment>
     <fragment
         android:id="@+id/wonFragment"
-        android:name="com.example.albumquiz.WonFragment"
+        android:name="com.huncho.jack.WonFragment"
         android:label="WonFragment" />
 </navigation>

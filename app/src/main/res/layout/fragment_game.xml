@@ -8,7 +8,7 @@
 
         <variable
             name="model"
-            type="com.example.albumquiz.GameFragment" />
+            type="com.huncho.jack.GameFragment" />
 
     </data>
 

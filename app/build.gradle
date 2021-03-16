@@ -17,7 +17,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.example.albumquiz"
+        applicationId "com.huncho.jack.albumquiz"
         minSdkVersion 19
         targetSdkVersion 30
         versionCode 1
